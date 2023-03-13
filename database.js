@@ -1,33 +1,18 @@
-// 'use strict';
-// const mongoose = require('mongoose');
-// require('dotenv').config();
+const mongoose = require('mongoose');
+mongoose.set('strictQuery', false);
 
-// module.exports = () => {
-//   try {
-//     mongoose.connect(proccess.env.Mongo_URL, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//         useCreateIndex: true,
-//         useFindAndModify: true,
-//     }).then(() => console.log('Connected to Mongodb......'));
-    
-//   } catch (error) {
-//     console.log(`error occuring in the db${error}`)
-//   }  
-// }
-// const connectDB = async ()=>{
-//     try {
-//            mongoose.connect(proccess.env.Mongo_URL, {
-//                 useNewUrlParser: true,
-//                 useUnifiedTopology: true,
-//                useCreateIndex: true,
-//                useFindAndModify: true,
-//             }).then(() => console.log('Connected to Mongodb......'));
-            
-//        } catch (error) {
-//             console.log(`error occuring in the db${error}`)
-//           }  
 
-// }
+const connectDB = async ()=>{
+    try {
+        const connect = await mongoose.connect(process.env.MONGO_URL,{
+            useUnifiedTopology: true,
+            useNewUrlParser: true,
+        });
+        
+           console.log(`connected to ${connect.connection.host}`);
+       } catch (error) {
+            console.log(`error occuring in the db${error}`)
+          }  
+}
 
-// module.exports = connectDB
+module.exports = connectDB

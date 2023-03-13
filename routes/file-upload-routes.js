@@ -9,7 +9,7 @@ const router = express.Router();
 //const {signUp, login} = require('../controllers/user-controller');
 // const userController= require('../controllers/user-controller');
 
-//  router.post('/signup', userController.signUp);
+// router.post('/signup', userController.signUp);
 //  router.post('/login', userController.login);
  router.post('/singleFile', upload.single('file'), singleFileUpload);
 router.post('/multipleFiles', upload.array('files'), multipleFileUpload);
